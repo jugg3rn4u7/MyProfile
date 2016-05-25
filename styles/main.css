@@ -183,6 +183,12 @@ a:after {
     height: auto;
 }
 
+.img-size {
+    height: auto; 
+    width: auto; 
+    max-width: 150px; 
+    max-height: 150px;
+}
 
 #intro, #courses {
 	background: #2c3e50;
@@ -200,6 +206,15 @@ a:after {
 	font-size: 20px;
 	padding-right: 8px;
 	vertical-align: middle;
+}
+
+#projects {
+	margin-top: 50px;
+	color: #ffffff;
+}
+
+#projects h5 {
+	color: #ffffff !important;
 }
 
 
