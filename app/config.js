@@ -11,7 +11,7 @@
   angular
   	.module('myprofile')
     .constant('CONSTANTS', {
-      'API_URL': 'http://localhost/myprofile/'
+      'API_URL': 'http://shrikantkakaraparthi.tech/'
     });
 
 

@@ -1,5 +1,5 @@
 {
-  "name": "angularjs-boilerplate",
+  "name": "MyProfile",
   "version": "1.1.7",
   "license": "MIT",
   "description": "Simple AngularJS Boilerplate to kick start your new project with SASS support and Gulp watch/build tasks",
@@ -58,5 +58,8 @@
   "bugs": {
     "url": "https://github.com/jbutko/AngularJS-Boilerplate/issues"
   },
-  "homepage": "https://github.com/jbutko/AngularJS-Boilerplate"
+  "homepage": "https://github.com/jbutko/AngularJS-Boilerplate",
+  "dependencies": {
+    "gulp-install": "^0.6.0"
+  }
 }
