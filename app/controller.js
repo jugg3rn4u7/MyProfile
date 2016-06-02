@@ -19,6 +19,13 @@
     // 'controller as' syntax
     var self = this;
 
+    $("#stars").rateYo({
+      rating: 0.0,
+      starWidth: "20px"
+    }).on("rateyo.set", function (e, data) {
+      var rating = data.rating;
+      $( "#sub-nav-bar" ).addClass( "hide" );
+    });
 
     ////////////  function definitions
 

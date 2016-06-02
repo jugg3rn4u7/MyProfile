@@ -153,6 +153,21 @@ a:after {
 	SECTION WRAPS
 ---------------------------------------------------*/
 
+.subnav {
+   margin:0;
+   top: 60px;
+   z-index: 1020;
+   background-color: #6f5499; 
+   padding: 8px 0px 0px 0px;
+}
+
+.subnav.affix {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index:10;
+}
+
 /* Header Wrap */
 .headerwrap {
 	background-color: #2C3F1E;
@@ -216,7 +231,6 @@ a:after {
 #projects h5 {
 	color: #ffffff !important;
 }
-
 
 #skillswrap {
 	background: #2c3e50;
