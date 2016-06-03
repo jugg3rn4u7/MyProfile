@@ -32,10 +32,6 @@
   	$( document ).delegate( "#send", "click", function() {
 	  sendMail();
 	});
-
-	$( document ).delegate( "#close-rate-me", "click", function() {
-	  	$( "#sub-nav-bar" ).addClass( "hide" );
-	});
     
   });
 

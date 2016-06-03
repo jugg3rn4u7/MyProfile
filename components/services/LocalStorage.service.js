@@ -58,12 +58,27 @@
           update: update,
           remove: remove,
           removeAll: removeAll,
-          list: list
+          list: list,
+          exists: exists
         };
 
 
         //////////////// function definitions
 
+        /**
+         * Check if localStorage exists
+         *
+         * @return {boolean} True/false if localStorage exists return true else return false
+         */
+         function exists() {
+           if (!supported) {
+                console.log('localStorage not supported, make sure you have the $cookies supported.');
+                return false;
+            } else {
+                console.log('localStorage is supported.');
+                return true;
+            }
+         }
 
         /**
          * Set localStorage value and check if it already do not exists
@@ -95,6 +110,8 @@
            if (!supported) {
                console.log('localStorage not supported, make sure you have the $cookies supported.');
              }
+
+            if ( !!$window.localStorage.getItem(name) ) { return $window.localStorage.getItem(name) }
 
            return $window.localStorage && angular.fromJson($window.localStorage.getItem(name));
          }
