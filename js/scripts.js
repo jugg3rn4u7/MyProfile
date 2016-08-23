@@ -11,7 +11,8 @@
   		var url = 'http://shrikantkakaraparthi.tech:3000/api/send-mail';
 	  	var data = { subject: $('#subject').val(), content: $('#content').val() };
 	  	var callback = function (response) {
-	  		if( response ) {
+	  		var result = response["result"];
+	  		if( result == "ok" ) {
 	  			alert("Message Sent !");
 	  		} else {
 	  			alert("Oops ! Didn't work. Try giving him a call :)");
