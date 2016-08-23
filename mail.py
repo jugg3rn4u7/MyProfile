@@ -18,6 +18,7 @@ CORS(app, resources={r"/api/*": {"origins": ALLOWED_ORIGINS}})
 def send_mail():
     try:
         json_data = request.json
+        print(json_data)
         subject = MIMEText(json_data["subject"])
         content = MIMEText(json_data["content"])
         to = "admin@shrikantkakaraparthi.tech"
