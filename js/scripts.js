@@ -7,7 +7,7 @@
 	 */
   $(document).ready(function() {
 
-  	function sendMail () {
+  	function sendMail() {
   		var url = './send-mail';
 	  	var data = { subject: $('#subject').val(), content: $('#content').val() };
 	  	var callback = function (response) {
