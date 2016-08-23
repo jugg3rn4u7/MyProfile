@@ -7,7 +7,7 @@ HOST = "0.0.0.0"
 PORT = 3000
 ALLOWED_ORIGINS = "*"
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ALLOWED_ORIGINS}})
+CORS(app, resources={r"/api/*": {"origins": ALLOWED_ORIGINS}})
 
 
 @app.route("/send-mail", methods=["POST"])
