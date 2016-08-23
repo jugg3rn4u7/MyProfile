@@ -8,7 +8,7 @@
   $(document).ready(function() {
 
   	function sendMail() {
-  		var url = './send-mail';
+  		var url = './api/send-mail';
 	  	var data = { subject: $('#subject').val(), content: $('#content').val() };
 	  	var callback = function (response) {
 	  		if( response ) {
