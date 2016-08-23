@@ -8,7 +8,7 @@
   $(document).ready(function() {
 
   	function sendMail() {
-  		var url = './api/send-mail';
+  		var url = 'http://shrikantkakaraparthi.tech:3000/api/send-mail';
 	  	var data = { subject: $('#subject').val(), content: $('#content').val() };
 	  	var callback = function (response) {
 	  		if( response ) {
