@@ -1,6 +1,6 @@
 /**
  * @author  Jozef Butko
- * @url		  www.jozefbutko.com/resume
+ * @url     www.jozefbutko.com/resume
  * @date    March 2015
  * @license MIT
  *
@@ -22,8 +22,9 @@ var gulp            = require('gulp'),
     reload          = browserSync.reload,
     $               = require('gulp-load-plugins')(),
     del             = require('del'),
-    runSequence     = require('run-sequence');
-
+    runSequence     = require('run-sequence'),
+    cleanCSS        = require('gulp-clean-css'),
+    minifyHTML      = require('gulp-minify-html');
 
 // optimize images
 gulp.task('images', function() {
@@ -41,24 +42,28 @@ gulp.task('images', function() {
 gulp.task('browser-sync', function() {
   browserSync({
     server: {
-      baseDir: "./myprofile"
+      baseDir: "./MyProfile"
     }
   });
 });
 
 // minify JS
 gulp.task('minify-js', function() {
-  gulp.src('js/*.js')
+  gulp.src('js/**/*.js')
     .pipe($.uglify())
-    .pipe(gulp.dest('./_build/'));
+    .pipe(gulp.dest('./_build/js/'));
 });
 
 // minify CSS
 gulp.task('minify-css', function() {
-  gulp.src(['./styles/**/*.css', '!./styles/**/*.min.css'])
+  gulp.src(['styles/*.css', '!styles/*.min.css'])
     .pipe($.rename({suffix: '.min'}))
-    .pipe($.minifyCss({keepBreaks:true}))
-    .pipe(gulp.dest('./styles/'))
+    .pipe(cleanCSS({
+        keepBreaks: true,
+        aggressiveMerging: false,
+        advanced: false
+      }))
+    .pipe(gulp.dest('styles/'))
     .pipe(gulp.dest('./_build/css/'));
 });
 
@@ -71,7 +76,7 @@ gulp.task('minify-html', function() {
   };
 
   gulp.src('./*.html')
-    .pipe($.minifyHtml(opts))
+    .pipe(minifyHTML(opts))
     .pipe(gulp.dest('./_build/'));
 });
 
@@ -86,7 +91,7 @@ gulp.task('fonts', function() {
 gulp.task('server', function(done) {
   return browserSync({
     server: {
-      baseDir: './'
+      baseDir: './',
     }
   }, done);
 });
@@ -111,15 +116,15 @@ gulp.task('clean:build', function (cb) {
 
 // concat files
 gulp.task('concat', function() {
-  gulp.src('./js/*.js')
+  gulp.src('./js/**/*.js')
     .pipe($.concat('scripts.js'))
-    .pipe(gulp.dest('./_build/'));
+    .pipe(gulp.dest('./_build/js/'));
 });
 
 // SASS task, will run when any SCSS files change & BrowserSync
 // will auto-update browsers
 gulp.task('sass', function() {
-  return gulp.src('styles/style.scss')
+  return gulp.src('./styles/style.scss')
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       style: 'expanded'
@@ -129,7 +134,7 @@ gulp.task('sass', function() {
       message: 'Error(s) occurred during compile!'
     }))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('styles'))
+    .pipe(gulp.dest('./styles'))
     .pipe(reload({
       stream: true
     }))
@@ -140,9 +145,7 @@ gulp.task('sass', function() {
 
 // SASS Build task
 gulp.task('sass:build', function() {
-  var s = $.size();
-
-  return gulp.src('styles/style.scss')
+  return gulp.src('./styles/style.scss')
     .pipe($.sass({
       style: 'compact'
     }))
@@ -157,20 +160,13 @@ gulp.task('sass:build', function() {
         /\.owl-prev/
       ]
     }))
-    .pipe($.minifyCss({
+    .pipe(cleanCSS({
       keepBreaks: true,
       aggressiveMerging: false,
       advanced: false
     }))
     .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest('_build/css'))
-    .pipe(s)
-    .pipe($.notify({
-      onLast: true,
-      message: function() {
-        return 'Total CSS size ' + s.prettySize;
-      }
-    }));
+    .pipe(gulp.dest('./_build/css'));
 });
 
 // BUGFIX: warning: possible EventEmitter memory leak detected. 11 listeners added.
@@ -185,7 +181,11 @@ gulp.task('usemin', function() {
       'templates': '<script type="text/javascript" src="js/templates.js"></script>'
     }))
     .pipe($.usemin({
-      css: [$.minifyCss(), 'concat'],
+      full_css: [cleanCSS({
+        keepBreaks: true,
+        aggressiveMerging: false,
+        advanced: false
+      }), 'concat'],
       libs: [$.uglify()],
       nonangularlibs: [$.uglify()],
       angularlibs: [$.uglify()],
@@ -203,11 +203,11 @@ gulp.task('templates', function() {
       '!node_modules/**/*.*',
       '!_build/**/*.*'
     ])
-    .pipe($.minifyHtml())
+    .pipe(minifyHTML())
     .pipe($.angularTemplatecache({
-      module: 'boilerplate'
+      module: 'myprofile'
     }))
-    .pipe(gulp.dest('_build/js'));
+    .pipe(gulp.dest('./_build/js'));
 });
 
 // reload all Browsers
@@ -263,6 +263,7 @@ gulp.task('build', function(callback) {
     'sass:build',
     'images',
     'templates',
+    'minify-css',
     'usemin',
     'fonts',
     'build:size',

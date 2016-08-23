@@ -24,22 +24,16 @@
 		<!-- or, set /favicon.ico for IE10 win -->
 		<meta name="msapplication-TileColor" content="#f01d4f">
 
-		<!-- CSS -->
-		<!-- build:css css/style.min.css -->
-		<link rel="stylesheet" href="bower_components/OwlCarousel/owl-carousel/owl.carousel.css" />
-		<!-- endbuild -->
-
-		<!-- Bootstrap core CSS -->
-	    <link href="styles/bootstrap.css" rel="stylesheet">
-	    <!-- Custom styles for this template -->
-	    <link href="styles/main.css" rel="stylesheet">
-	  
+		<!-- Vendors -->
+		<!-- Twitter Bootstrap 3.x, Font-Awesome, Custom CSS -->
+		<!-- build:full_css css/full_css.css -->
+		<link href="styles/bootstrap.css" rel="stylesheet">
+		<link href="styles/main.css" rel="stylesheet">
 		<link rel="stylesheet" href="styles/font-awesome.min.css">
 		<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
     	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-
-    	<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.1.1/jquery.rateyo.min.css">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.1.1/jquery.rateyo.min.css">
+		<!-- endbuild -->
 
 	</head>
 
@@ -61,22 +55,16 @@
 	</body>
 
 	<!-- Vendors -->
+	<!-- Non-angular libraries -->
 	<!-- build:nonangularlibs js/nonangularlibs.js -->
 	<script type="text/javascript" src="js/nonangular/jquery-1.11.2.min.js"></script>
-
-	<!-- endbuild -->
-
-	<!-- Non-angular libraries -->
-	<!-- build:libs js/libs.js -->
 	<script type="text/javascript" src="js/nonangular/lodash.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-	<script type="text/javascript" src="bower_components/OwlCarousel/owl-carousel/owl.carousel.min.js"></script>
-	<!-- endbuild -->
-
-	<script type="text/javascript" src="js/nonangular/smoothscroll.js"></script> 
 	<script src="js/nonangular/Chart.js"></script>
 	<script src="js/nonangular/bootstrap.js"></script>
 	<script src="js/nonangular/js.cookie.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.1.1/jquery.rateyo.min.js"></script>
+	<!-- endbuild -->
 
 	<!-- Angular external libraries for application -->
 	<!-- build:angularlibs js/angularlibs.js -->
@@ -87,8 +75,6 @@
 
 	<!-- Angular components -->
 	<!-- build:appcomponents js/appcomponents.js -->
-	<script type="text/javascript" src="app/app.js"></script>
-	<script type="text/javascript" src="app/config.js"></script>
 	<script type="text/javascript" src="components/services/LocalStorage.service.js"></script>
 	<script type="text/javascript" src="components/services/queryService.service.js"></script>
 	<script type="text/javascript" src="components/directives/main.nav.directive.js"></script>
@@ -98,6 +84,8 @@
 
 	<!-- Application sections -->
 	<!-- build:mainapp js/mainapp.js -->
+	<script type="text/javascript" src="app/app.js"></script>
+	<script type="text/javascript" src="app/config.js"></script>
 	<script type="text/javascript" src="app/factory.js"></script>
 	<script type="text/javascript" src="app/controller.js"></script>
 	<!-- endbuild -->
@@ -105,8 +93,5 @@
 	<!-- templates from $templateCache -->
 	<!-- build:templates -->
 	<!-- endbuild -->
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.1.1/jquery.rateyo.min.js"></script>
 
 </html>
