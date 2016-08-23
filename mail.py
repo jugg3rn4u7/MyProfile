@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": ALLOWED_ORIGINS}})
 
 
-@app.route("/send-mail", methods=["POST"])
+@app.route("send-mail", methods=["POST"])
 @cross_origin()
 def send_mail():
     try:
