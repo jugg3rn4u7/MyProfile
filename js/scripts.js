@@ -18,17 +18,8 @@
 	  			alert("Oops ! Didn't work. Try giving him a call :)");
 	  		}
 	  	};
-	  	var dataType = 'JSON';
 
-	  	$.ajax({
-		  type: "POST",
-		  url: url,
-		  data: data,
-		  success: callback,
-		  failure: callback,
-		  dataType: dataType,
-		  contentType: "application/json"
-		});
+	  	$.post( url, data, callback, "json");
   	}
 
   	$( document ).delegate( "#send", "click", function() {
