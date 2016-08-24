@@ -20,7 +20,7 @@ def send_mail():
         subject = MIMEText(request.form["subject"])
         content = MIMEText(request.form["content"])
         to = "shrikant.kakaraparthi@mavs.uta.edu"
-        s = smtplib.SMTP("admin@shrikantkakaraparthi.tech")
+        s = smtplib.SMTP("0.0.0.0")
         s.sendmail(subject, to, content)
         s.quit()
         return jsonify(result='ok')
