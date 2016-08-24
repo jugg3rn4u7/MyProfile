@@ -1,8 +1,4 @@
 import sys
-import json
-import os
-import smtplib
-from email.mime.text import MIMEText
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 from twilio.rest import TwilioRestClient
@@ -23,8 +19,8 @@ TWILIO_SENDER_NUMBER = "+12013800248"
 @cross_origin()
 def send_message():
     try:
-        subject = MIMEText(request.form["subject"])
-        content = MIMEText(request.form["content"])
+        subject = request.form["subject"]
+        content = request.form["content"]
         receiverPhoneNumber = "+16822265768"
         twilioClient = TwilioRestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
         txtMessage = "Subject: %s. Content: %s" % (subject, content)
