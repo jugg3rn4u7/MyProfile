@@ -7,8 +7,8 @@
 	 */
   $(document).ready(function() {
 
-  	function sendMail() {
-  		var url = 'http://shrikantkakaraparthi.tech:3000/api/send-mail';
+  	function sendMessage() {
+  		var url = 'http://shrikantkakaraparthi.tech:3000/api/send-message';
 	  	var data = { subject: $('#subject').val(), content: $('#content').val() };
 	  	var callback = function (response) {
 	  		var result = response["result"];
@@ -23,7 +23,7 @@
   	}
 
   	$( document ).delegate( "#send", "click", function() {
-	  sendMail();
+	  sendMessage();
 	});
     
   });
