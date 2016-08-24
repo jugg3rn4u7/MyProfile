@@ -26,7 +26,8 @@
 		  data: data,
 		  success: callback,
 		  failure: callback,
-		  dataType: dataType
+		  dataType: dataType,
+		  contentType: "application/json"
 		});
   	}
 
