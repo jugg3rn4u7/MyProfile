@@ -19,6 +19,8 @@ def send_mail():
     try:
         json_data = request
         print(json_data)
+        for attr in dir(request):
+            print "request.%s = %s" % (attr, getattr(request, attr))
         subject = MIMEText(json_data["subject"])
         content = MIMEText(json_data["content"])
         to = "admin@shrikantkakaraparthi.tech"
