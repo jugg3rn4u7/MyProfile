@@ -17,7 +17,7 @@ CORS(app, resources={r"/api/*": {"origins": ALLOWED_ORIGINS}})
 @cross_origin()
 def send_mail():
     try:
-        json_data = request.json
+        json_data = request.get_json(force=True)
         print(json_data)
         subject = MIMEText(json_data["subject"])
         content = MIMEText(json_data["content"])
